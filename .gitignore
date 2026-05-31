@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# Runtime outputs / caches
+workspace/
+output/
+outputs/
+logs/
+*.log
+.cache/
+val_cache/
+wandb/
+runs/
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
+.ipynb_checkpoints/
+
+# Secrets / local env
+.env
+*.local
+
+# Backups
+*.bak
+*.bak_*
+
+# Large local artifacts
+*.ply
+*.npy
+*.npz

@@ -1,0 +1,1170 @@
+# Category-specific DBSCAN eps parameters
+# eps: DBSCAN neighborhood radius in meters
+# Larger objects need larger eps to avoid over-segmentation
+
+# Default eps for unknown categories
+default_eps: 0.15
+
+categories:
+  # ==================== Indoor Furniture ====================
+  # Seating
+  chair:
+    eps: 0.25
+  armchair:
+    eps: 0.3
+  sofa:
+    eps: 0.5
+  couch:
+    eps: 0.5
+  bench:
+    eps: 0.5
+  stool:
+    eps: 0.2
+  ottoman:
+    eps: 0.25
+  recliner:
+    eps: 0.4
+  office chair:
+    eps: 0.3
+
+  # Tables
+  table:
+    eps: 0.4
+  desk:
+    eps: 0.5
+  dining table:
+    eps: 0.6
+  coffee table:
+    eps: 0.4
+  side table:
+    eps: 0.25
+  nightstand:
+    eps: 0.25
+  counter:
+    eps: 0.6
+  bar counter:
+    eps: 0.6
+
+  # Storage
+  cabinet:
+    eps: 0.4
+  shelf:
+    eps: 0.4
+  bookshelf:
+    eps: 0.5
+  wardrobe:
+    eps: 0.5
+  dresser:
+    eps: 0.4
+  drawer:
+    eps: 0.25
+  chest:
+    eps: 0.35
+  locker:
+    eps: 0.3
+
+  # Beds
+  bed:
+    eps: 0.6
+  crib:
+    eps: 0.4
+  mattress:
+    eps: 0.6
+  pillow:
+    eps: 0.15
+  blanket:
+    eps: 0.4
+
+  # ==================== Electronics ====================
+  # Computing
+  computer:
+    eps: 0.25
+  laptop:
+    eps: 0.15
+  monitor:
+    eps: 0.2
+  keyboard:
+    eps: 0.15
+  mouse:
+    eps: 0.08
+  printer:
+    eps: 0.25
+  router:
+    eps: 0.1
+  speaker:
+    eps: 0.15
+  headphones:
+    eps: 0.1
+  tablet:
+    eps: 0.1
+
+  # Entertainment
+  television:
+    eps: 0.4
+  remote control:
+    eps: 0.08
+  game console:
+    eps: 0.15
+  projector:
+    eps: 0.2
+  stereo:
+    eps: 0.25
+  radio:
+    eps: 0.15
+
+  # Communication
+  phone:
+    eps: 0.08
+  cell phone:
+    eps: 0.06
+  smartphone:
+    eps: 0.06
+
+  # Photography
+  camera:
+    eps: 0.1
+  tripod:
+    eps: 0.2
+
+  # ==================== Appliances ====================
+  # Kitchen appliances
+  refrigerator:
+    eps: 0.5
+  microwave:
+    eps: 0.2
+  oven:
+    eps: 0.4
+  stove:
+    eps: 0.4
+  toaster:
+    eps: 0.1
+  blender:
+    eps: 0.1
+  coffee maker:
+    eps: 0.15
+  kettle:
+    eps: 0.1
+  rice cooker:
+    eps: 0.15
+  dishwasher:
+    eps: 0.4
+  food processor:
+    eps: 0.15
+
+  # Cleaning appliances
+  washing machine:
+    eps: 0.4
+  dryer:
+    eps: 0.4
+  vacuum cleaner:
+    eps: 0.2
+  iron:
+    eps: 0.1
+  mop:
+    eps: 0.15
+  broom:
+    eps: 0.15
+
+  # Climate
+  air conditioner:
+    eps: 0.4
+  heater:
+    eps: 0.3
+  fan:
+    eps: 0.2
+  humidifier:
+    eps: 0.15
+
+  # ==================== Kitchen & Dining ====================
+  # Cookware
+  pot:
+    eps: 0.15
+  pan:
+    eps: 0.15
+  frying pan:
+    eps: 0.15
+  wok:
+    eps: 0.15
+  baking tray:
+    eps: 0.15
+
+  # Utensils
+  knife:
+    eps: 0.08
+  cutting board:
+    eps: 0.15
+  spatula:
+    eps: 0.08
+  ladle:
+    eps: 0.08
+  whisk:
+    eps: 0.08
+  tongs:
+    eps: 0.08
+  peeler:
+    eps: 0.06
+  colander:
+    eps: 0.12
+  can opener:
+    eps: 0.06
+
+  # Tableware
+  plate:
+    eps: 0.12
+  bowl:
+    eps: 0.1
+  dish:
+    eps: 0.12
+  cup:
+    eps: 0.06
+  mug:
+    eps: 0.06
+  glass:
+    eps: 0.06
+  wine glass:
+    eps: 0.06
+  pitcher:
+    eps: 0.1
+  teapot:
+    eps: 0.1
+  tray:
+    eps: 0.2
+
+  # Cutlery
+  fork:
+    eps: 0.05
+  spoon:
+    eps: 0.05
+  chopsticks:
+    eps: 0.05
+
+  # Containers
+  bottle:
+    eps: 0.08
+  jar:
+    eps: 0.08
+  container:
+    eps: 0.15
+  basket:
+    eps: 0.2
+
+  # Kitchen fixtures
+  sink:
+    eps: 0.35
+  faucet:
+    eps: 0.1
+  trash can:
+    eps: 0.25
+
+  # ==================== Bathroom ====================
+  # Fixtures
+  toilet:
+    eps: 0.3
+  bathtub:
+    eps: 0.6
+  shower:
+    eps: 0.5
+  bathroom sink:
+    eps: 0.3
+
+  # Accessories
+  mirror:
+    eps: 0.3
+  towel:
+    eps: 0.2
+  towel rack:
+    eps: 0.25
+  soap dispenser:
+    eps: 0.08
+  bath mat:
+    eps: 0.25
+  shower curtain:
+    eps: 0.4
+  scale:
+    eps: 0.15
+
+  # Personal care
+  toothbrush:
+    eps: 0.05
+  hairdryer:
+    eps: 0.1
+  razor:
+    eps: 0.05
+
+  # ==================== Lighting ====================
+  lamp:
+    eps: 0.2
+  table lamp:
+    eps: 0.15
+  floor lamp:
+    eps: 0.25
+  desk lamp:
+    eps: 0.15
+  chandelier:
+    eps: 0.4
+  lantern:
+    eps: 0.15
+  candle:
+    eps: 0.06
+  flashlight:
+    eps: 0.08
+
+  # ==================== Decor ====================
+  # Wall decor
+  painting:
+    eps: 0.3
+  picture:
+    eps: 0.2
+  photo frame:
+    eps: 0.15
+  poster:
+    eps: 0.3
+  clock:
+    eps: 0.15
+
+  # Decorative
+  vase:
+    eps: 0.1
+  sculpture:
+    eps: 0.25
+  statue:
+    eps: 0.4
+  figurine:
+    eps: 0.1
+  trophy:
+    eps: 0.12
+  globe:
+    eps: 0.15
+
+  # Textiles
+  curtain:
+    eps: 0.5
+  rug:
+    eps: 0.6
+  carpet:
+    eps: 0.8
+  cushion:
+    eps: 0.15
+  throw pillow:
+    eps: 0.15
+
+  # ==================== Plants ====================
+  plant:
+    eps: 0.3
+  potted plant:
+    eps: 0.25
+  flower:
+    eps: 0.15
+  bouquet:
+    eps: 0.15
+  flower pot:
+    eps: 0.15
+  cactus:
+    eps: 0.15
+  fern:
+    eps: 0.2
+
+  # ==================== Office ====================
+  # Supplies
+  pen:
+    eps: 0.05
+  pencil:
+    eps: 0.05
+  marker:
+    eps: 0.05
+  eraser:
+    eps: 0.04
+  ruler:
+    eps: 0.06
+  scissors:
+    eps: 0.06
+  stapler:
+    eps: 0.06
+  tape:
+    eps: 0.05
+  notebook:
+    eps: 0.1
+  folder:
+    eps: 0.1
+  envelope:
+    eps: 0.08
+
+  # Equipment
+  whiteboard:
+    eps: 0.6
+  blackboard:
+    eps: 0.6
+  calculator:
+    eps: 0.08
+
+  # ==================== Books & Media ====================
+  book:
+    eps: 0.1
+  magazine:
+    eps: 0.1
+  newspaper:
+    eps: 0.15
+
+  # ==================== Bags ====================
+  bag:
+    eps: 0.2
+  handbag:
+    eps: 0.15
+  backpack:
+    eps: 0.2
+  briefcase:
+    eps: 0.2
+  tote bag:
+    eps: 0.2
+  shopping bag:
+    eps: 0.2
+  suitcase:
+    eps: 0.35
+  luggage:
+    eps: 0.4
+  wallet:
+    eps: 0.06
+
+  # ==================== Clothing ====================
+  # Garments
+  shirt:
+    eps: 0.2
+  t-shirt:
+    eps: 0.2
+  sweater:
+    eps: 0.2
+  jacket:
+    eps: 0.25
+  coat:
+    eps: 0.3
+  dress:
+    eps: 0.3
+  skirt:
+    eps: 0.2
+  pants:
+    eps: 0.25
+  jeans:
+    eps: 0.25
+  shorts:
+    eps: 0.2
+  suit:
+    eps: 0.3
+  tie:
+    eps: 0.08
+  scarf:
+    eps: 0.15
+  hat:
+    eps: 0.12
+  cap:
+    eps: 0.1
+  gloves:
+    eps: 0.1
+  shoes:
+    eps: 0.12
+  boots:
+    eps: 0.15
+  sneakers:
+    eps: 0.12
+
+  # Accessories
+  watch:
+    eps: 0.04
+  glasses:
+    eps: 0.06
+  sunglasses:
+    eps: 0.06
+  necklace:
+    eps: 0.08
+  bracelet:
+    eps: 0.04
+  ring:
+    eps: 0.02
+  belt:
+    eps: 0.15
+  umbrella:
+    eps: 0.25
+
+  # ==================== Sports ====================
+  # Balls
+  ball:
+    eps: 0.12
+  soccer ball:
+    eps: 0.12
+  football:
+    eps: 0.12
+  basketball:
+    eps: 0.12
+  baseball:
+    eps: 0.06
+  tennis ball:
+    eps: 0.05
+  golf ball:
+    eps: 0.03
+  volleyball:
+    eps: 0.12
+
+  # Equipment
+  racket:
+    eps: 0.15
+  bat:
+    eps: 0.15
+  golf club:
+    eps: 0.15
+  skateboard:
+    eps: 0.25
+  surfboard:
+    eps: 0.6
+  fishing rod:
+    eps: 0.2
+  net:
+    eps: 0.5
+  hoop:
+    eps: 0.25
+
+  # Fitness
+  dumbbell:
+    eps: 0.12
+  barbell:
+    eps: 0.25
+  yoga mat:
+    eps: 0.4
+  treadmill:
+    eps: 0.6
+  exercise bike:
+    eps: 0.5
+
+  # Gear
+  helmet:
+    eps: 0.15
+  knee pad:
+    eps: 0.1
+  goggles:
+    eps: 0.08
+
+  # ==================== Toys ====================
+  toy:
+    eps: 0.15
+  doll:
+    eps: 0.12
+  stuffed animal:
+    eps: 0.15
+  teddy bear:
+    eps: 0.15
+  lego:
+    eps: 0.1
+  puzzle:
+    eps: 0.15
+  board game:
+    eps: 0.2
+  toy car:
+    eps: 0.1
+  balloon:
+    eps: 0.15
+  kite:
+    eps: 0.3
+
+  # ==================== Musical Instruments ====================
+  # String
+  guitar:
+    eps: 0.35
+  violin:
+    eps: 0.2
+  cello:
+    eps: 0.4
+  ukulele:
+    eps: 0.2
+
+  # Keyboard
+  piano:
+    eps: 0.8
+  keyboard:
+    eps: 0.4
+
+  # Wind
+  flute:
+    eps: 0.12
+  saxophone:
+    eps: 0.2
+  trumpet:
+    eps: 0.15
+  harmonica:
+    eps: 0.06
+
+  # Percussion
+  drum:
+    eps: 0.25
+  drum set:
+    eps: 0.6
+  tambourine:
+    eps: 0.12
+
+  # ==================== Vehicles ====================
+  # Road vehicles
+  car:
+    eps: 1.2
+  truck:
+    eps: 1.8
+  bus:
+    eps: 2.5
+  van:
+    eps: 1.5
+  motorcycle:
+    eps: 0.6
+  scooter:
+    eps: 0.5
+  bicycle:
+    eps: 0.5
+  taxi:
+    eps: 1.2
+  ambulance:
+    eps: 1.5
+  fire truck:
+    eps: 2.0
+  police car:
+    eps: 1.2
+
+  # Rail
+  train:
+    eps: 3.0
+  subway:
+    eps: 2.5
+  tram:
+    eps: 2.0
+
+  # Water
+  boat:
+    eps: 2.0
+  ship:
+    eps: 5.0
+  yacht:
+    eps: 3.0
+  sailboat:
+    eps: 2.5
+  canoe:
+    eps: 1.2
+  kayak:
+    eps: 1.0
+
+  # Air
+  airplane:
+    eps: 5.0
+  helicopter:
+    eps: 2.5
+  drone:
+    eps: 0.3
+
+  # Parts
+  wheel:
+    eps: 0.3
+  tire:
+    eps: 0.3
+  steering wheel:
+    eps: 0.2
+
+  # ==================== Street Infrastructure ====================
+  traffic light:
+    eps: 0.4
+  street light:
+    eps: 0.5
+  lamp post:
+    eps: 0.5
+  stop sign:
+    eps: 0.3
+  traffic sign:
+    eps: 0.4
+  parking meter:
+    eps: 0.25
+  fire hydrant:
+    eps: 0.2
+  mailbox:
+    eps: 0.25
+  bus stop:
+    eps: 0.8
+  bus shelter:
+    eps: 1.5
+  garbage bin:
+    eps: 0.3
+  recycling bin:
+    eps: 0.3
+  fountain:
+    eps: 1.0
+  monument:
+    eps: 1.5
+  billboard:
+    eps: 1.5
+  signboard:
+    eps: 0.5
+  awning:
+    eps: 0.8
+  flagpole:
+    eps: 0.4
+  banner:
+    eps: 0.5
+  manhole cover:
+    eps: 0.3
+  speed bump:
+    eps: 0.5
+
+  # Barriers
+  fence:
+    eps: 1.5
+  gate:
+    eps: 1.0
+  railing:
+    eps: 0.8
+  guardrail:
+    eps: 1.2
+  barrier:
+    eps: 0.8
+  bollard:
+    eps: 0.2
+  cone:
+    eps: 0.15
+  traffic cone:
+    eps: 0.15
+  barricade:
+    eps: 0.8
+
+  # Street furniture
+  newspaper stand:
+    eps: 0.5
+  vending machine:
+    eps: 0.5
+  atm:
+    eps: 0.4
+  phone booth:
+    eps: 0.6
+  kiosk:
+    eps: 1.0
+  street vendor cart:
+    eps: 0.8
+  food cart:
+    eps: 0.8
+
+  # Parking
+  bike rack:
+    eps: 0.6
+  bicycle stand:
+    eps: 0.5
+
+  # ==================== Park & Nature ====================
+  # Facilities
+  park bench:
+    eps: 0.5
+  picnic table:
+    eps: 0.8
+  gazebo:
+    eps: 2.0
+  pavilion:
+    eps: 2.5
+  pergola:
+    eps: 2.0
+  bandstand:
+    eps: 2.5
+  slide:
+    eps: 0.8
+  swing set:
+    eps: 1.0
+  seesaw:
+    eps: 0.8
+  sandbox:
+    eps: 1.0
+  climbing frame:
+    eps: 1.2
+  jungle gym:
+    eps: 1.5
+  merry-go-round:
+    eps: 1.2
+
+  # Nature objects
+  tree:
+    eps: 1.0
+  palm tree:
+    eps: 0.8
+  pine tree:
+    eps: 1.0
+  bush:
+    eps: 0.5
+  shrub:
+    eps: 0.5
+  hedge:
+    eps: 1.0
+  flower bed:
+    eps: 0.8
+  pond:
+    eps: 2.0
+  rock:
+    eps: 0.4
+  boulder:
+    eps: 0.6
+  stone:
+    eps: 0.2
+
+  # Water features
+  water fountain:
+    eps: 0.8
+  drinking fountain:
+    eps: 0.3
+  sprinkler:
+    eps: 0.15
+
+  # ==================== Buildings & Structures ====================
+  house:
+    eps: 2.5
+  building:
+    eps: 3.0
+  apartment:
+    eps: 3.0
+  tower:
+    eps: 3.5
+  church:
+    eps: 3.0
+  temple:
+    eps: 3.0
+  castle:
+    eps: 4.0
+  museum:
+    eps: 3.5
+  library:
+    eps: 3.0
+  school:
+    eps: 3.5
+  hospital:
+    eps: 4.0
+  hotel:
+    eps: 3.5
+  restaurant:
+    eps: 2.5
+  cafe:
+    eps: 2.0
+  shop:
+    eps: 2.0
+  store:
+    eps: 2.5
+  supermarket:
+    eps: 4.0
+  stadium:
+    eps: 5.0
+  theater:
+    eps: 3.5
+  gym:
+    eps: 3.0
+  swimming pool:
+    eps: 4.0
+  playground:
+    eps: 3.0
+  bridge:
+    eps: 4.0
+  tunnel:
+    eps: 3.0
+  pier:
+    eps: 3.0
+  lighthouse:
+    eps: 2.0
+  barn:
+    eps: 3.0
+  shed:
+    eps: 1.5
+  tent:
+    eps: 1.5
+  cabin:
+    eps: 2.0
+
+  # ==================== Food ====================
+  # Fruits
+  apple:
+    eps: 0.05
+  orange:
+    eps: 0.05
+  banana:
+    eps: 0.06
+  grape:
+    eps: 0.03
+  strawberry:
+    eps: 0.03
+  watermelon:
+    eps: 0.15
+  pineapple:
+    eps: 0.1
+  mango:
+    eps: 0.06
+  peach:
+    eps: 0.05
+  pear:
+    eps: 0.05
+  lemon:
+    eps: 0.04
+  cherry:
+    eps: 0.02
+  kiwi:
+    eps: 0.04
+  avocado:
+    eps: 0.05
+
+  # Vegetables
+  carrot:
+    eps: 0.05
+  broccoli:
+    eps: 0.08
+  cabbage:
+    eps: 0.1
+  lettuce:
+    eps: 0.1
+  cucumber:
+    eps: 0.06
+  tomato:
+    eps: 0.05
+  potato:
+    eps: 0.05
+  onion:
+    eps: 0.05
+  garlic:
+    eps: 0.03
+  pepper:
+    eps: 0.05
+  corn:
+    eps: 0.06
+  mushroom:
+    eps: 0.04
+  eggplant:
+    eps: 0.08
+
+  # Prepared food
+  bread:
+    eps: 0.1
+  croissant:
+    eps: 0.06
+  bagel:
+    eps: 0.05
+  cake:
+    eps: 0.15
+  pie:
+    eps: 0.12
+  cookie:
+    eps: 0.04
+  donut:
+    eps: 0.05
+  pizza:
+    eps: 0.15
+  burger:
+    eps: 0.08
+  sandwich:
+    eps: 0.08
+  hot dog:
+    eps: 0.06
+  taco:
+    eps: 0.06
+  sushi:
+    eps: 0.04
+  noodles:
+    eps: 0.1
+  pasta:
+    eps: 0.1
+  rice:
+    eps: 0.1
+  salad:
+    eps: 0.12
+  soup:
+    eps: 0.1
+  steak:
+    eps: 0.1
+  chicken:
+    eps: 0.1
+  fish:
+    eps: 0.1
+  egg:
+    eps: 0.04
+  cheese:
+    eps: 0.08
+  ice cream:
+    eps: 0.06
+  chocolate:
+    eps: 0.05
+  candy:
+    eps: 0.03
+  popcorn:
+    eps: 0.08
+  chips:
+    eps: 0.06
+
+  # Drinks
+  water bottle:
+    eps: 0.06
+  soda:
+    eps: 0.06
+  juice:
+    eps: 0.06
+  milk:
+    eps: 0.08
+  coffee:
+    eps: 0.06
+  tea:
+    eps: 0.06
+  beer:
+    eps: 0.06
+  wine:
+    eps: 0.06
+
+  # ==================== Tools ====================
+  # Hand tools
+  hammer:
+    eps: 0.1
+  screwdriver:
+    eps: 0.08
+  wrench:
+    eps: 0.08
+  pliers:
+    eps: 0.08
+  saw:
+    eps: 0.15
+  drill:
+    eps: 0.12
+  tape measure:
+    eps: 0.06
+  shovel:
+    eps: 0.25
+  rake:
+    eps: 0.25
+  ladder:
+    eps: 0.5
+  toolbox:
+    eps: 0.2
+
+  # Power tools
+  power drill:
+    eps: 0.15
+  chainsaw:
+    eps: 0.25
+  lawn mower:
+    eps: 0.5
+
+  # Hardware
+  nail:
+    eps: 0.02
+  screw:
+    eps: 0.02
+  bolt:
+    eps: 0.02
+  lock:
+    eps: 0.05
+  key:
+    eps: 0.03
+  chain:
+    eps: 0.15
+  rope:
+    eps: 0.15
+  wire:
+    eps: 0.1
+  hose:
+    eps: 0.3
+  duct tape:
+    eps: 0.05
+
+  # ==================== Safety ====================
+  fire extinguisher:
+    eps: 0.2
+  smoke detector:
+    eps: 0.1
+  first aid kit:
+    eps: 0.15
+  safety vest:
+    eps: 0.2
+  hard hat:
+    eps: 0.12
+  face mask:
+    eps: 0.08
+  wheelchair:
+    eps: 0.5
+  crutches:
+    eps: 0.2
+  cane:
+    eps: 0.15
+
+  # ==================== Baby ====================
+  stroller:
+    eps: 0.5
+  car seat:
+    eps: 0.3
+  high chair:
+    eps: 0.35
+  baby bottle:
+    eps: 0.06
+  pacifier:
+    eps: 0.03
+  diaper:
+    eps: 0.1
+  baby monitor:
+    eps: 0.08
+  playpen:
+    eps: 0.6
+
+  # ==================== Outdoor ====================
+  # Furniture
+  patio chair:
+    eps: 0.35
+  patio table:
+    eps: 0.5
+  lounge chair:
+    eps: 0.5
+  hammock:
+    eps: 0.6
+  swing:
+    eps: 0.5
+
+  # Equipment
+  grill:
+    eps: 0.5
+  barbecue:
+    eps: 0.5
+  fire pit:
+    eps: 0.5
+  bird feeder:
+    eps: 0.15
+  dog house:
+    eps: 0.5
+  leash:
+    eps: 0.15
+
+  # ==================== Ground/Surface ====================
+  road:
+    eps: 3.0
+  sidewalk:
+    eps: 2.0
+  path:
+    eps: 1.5
+  floor:
+    eps: 2.0
+  ground:
+    eps: 3.0
+  grass:
+    eps: 2.0
+  pavement:
+    eps: 2.0
+  driveway:
+    eps: 2.0
+  parking lot:
+    eps: 4.0
+  crosswalk:
+    eps: 1.5
+  curb:
+    eps: 1.0
+  wall:
+    eps: 2.0
+  ceiling:
+    eps: 2.0
+  roof:
+    eps: 2.5
+  window:
+    eps: 0.6
+  door:
+    eps: 0.6
+  stairs:
+    eps: 1.0
+  step:
+    eps: 0.4
+  ramp:
+    eps: 1.0
+  elevator:
+    eps: 1.0
+  escalator:
+    eps: 1.5

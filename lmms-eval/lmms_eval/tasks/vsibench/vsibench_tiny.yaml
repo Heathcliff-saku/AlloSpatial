@@ -1,0 +1,13 @@
+dataset_name: full
+test_split: test
+task: "vsibench_tiny"
+dataset_kwargs:
+  token: True
+  cache_dir: vsibench
+  video: True
+include: _default_template_yaml
+process_docs: !function utils.process_docs_tiny
+metric_list:
+  - metric: vsibench_score
+    aggregation: !function utils.vsibench_tiny_aggregate_results
+    higher_is_better: true

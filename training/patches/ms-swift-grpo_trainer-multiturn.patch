@@ -1,0 +1,48 @@
+diff --git a/swift/rlhf_trainers/grpo_trainer.py b/swift/rlhf_trainers/grpo_trainer.py
+index 22eb52cff..475a05221 100644
+--- a/swift/rlhf_trainers/grpo_trainer.py
++++ b/swift/rlhf_trainers/grpo_trainer.py
+@@ -241,6 +241,22 @@ class GRPOTrainer(RolloutTrainerMixin, SwiftMixin, HFGRPOTrainer):
+             # dynamic sampling for std=0 groups
+             inputs, total_rewards_per_func = self._dynamic_sampling(inputs, total_rewards_per_func)  # noqa
+ 
++        # Extract completions for logging BEFORE _prepare_batch_inputs, because
++        # _prepare_batch_inputs calls replace_assistant_response_with_ids which replaces
++        # messages[-1]['content'] (full text) with response_token_ids (model-generated tokens only).
++        # For multi-turn schedulers, the full text includes tool calls and results that are not
++        # part of response_token_ids, so we must capture it here while it's still a string.
++        log_messages = [inp['messages'][:-1] for inp in inputs]
++        log_completions = [deepcopy(inp['messages'][-1]['content']) for inp in inputs]
++        for i, completion in enumerate(log_completions):
++            if isinstance(completion, str):
++                continue
++            if isinstance(completion, list):
++                token_ids = completion
++            elif isinstance(completion, dict):
++                token_ids = completion['token_ids']
++            log_completions[i] = self.processing_class.decode(token_ids)
++
+         batch_encoded_inputs = self._prepare_batch_inputs(inputs)
+ 
+         total_advantages = self._compute_advantages(inputs, total_rewards_per_func, batch_encoded_inputs)
+@@ -264,18 +280,8 @@ class GRPOTrainer(RolloutTrainerMixin, SwiftMixin, HFGRPOTrainer):
+ 
+         with profiling_context(self, 'log_metrics'):
+             # --- logs (prompts + completions) ---
+-            messages = [inp['messages'][:-1] for inp in inputs]
+-            completions = [deepcopy(inp['messages'][-1]['content']) for inp in inputs]
+-            for i, completion in enumerate(completions):
+-                if isinstance(completion, str):
+-                    continue
+-                if isinstance(completion, list):
+-                    token_ids = completion
+-                elif isinstance(completion, dict):
+-                    token_ids = completion['token_ids']
+-                completions[i] = self.processing_class.decode(token_ids)
+-            valid_messages = self._gather_and_flatten(messages, flatten_level=0)
+-            valid_completions = self._gather_and_flatten(completions, flatten_level=0)
++            valid_messages = self._gather_and_flatten(log_messages, flatten_level=0)
++            valid_completions = self._gather_and_flatten(log_completions, flatten_level=0)
+             self._logs['prompt'].extend(self._apply_chat_template_to_messages_list(valid_messages))
+             self._logs['completion'].extend(valid_completions)
+ 

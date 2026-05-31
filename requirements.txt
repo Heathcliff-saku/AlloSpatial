@@ -1,0 +1,46 @@
+# Core dependencies for the World2Mind tool + inference demos.
+# Perception models and training frameworks are installed separately (see below).
+
+# --- model service (FastAPI) ---
+fastapi
+uvicorn
+pydantic
+requests
+httpx
+
+# --- numerics / geometry ---
+numpy<2
+scipy
+scikit-learn          # DBSCAN clustering for AST instance grouping
+
+# --- video / image I/O ---
+opencv-python
+torchcodec            # in-process frame decoding (fallback: decord)
+decord
+imageio-ffmpeg
+Pillow
+matplotlib
+
+# --- deep learning ---
+torch
+transformers
+huggingface_hub
+
+# --- LLM API clients (inference demos) ---
+openai
+
+# --- utils ---
+pyyaml
+tqdm
+loguru
+
+# ---------------------------------------------------------------------------
+# Installed separately (not on PyPI as simple pins):
+#   Depth Anything 3:
+#     pip install "git+https://github.com/ByteDance-Seed/Depth-Anything-3.git"
+#   SAM 3 (open-vocabulary segmentation, via ultralytics) + the sam3.pt checkpoint:
+#     pip install ultralytics      # then download sam3.pt and set sam3.model_path in the config
+#
+# Evaluation:   pip install -e lmms-eval
+# Training:     pip install ms-swift   (+ apply training/patches/, see training/patches/README.md)
+# ---------------------------------------------------------------------------

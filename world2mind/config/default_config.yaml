@@ -1,0 +1,149 @@
+# World2Mind Tool Configuration
+# Refactored from original raptor project
+
+# ============================================================
+# Model Service Settings (NEW)
+# ============================================================
+service:
+  host: "0.0.0.0"
+  port: 8100
+  gpu_ids: [0]            # Each GPU deploys one set of DA3+SAM3
+  workers_per_gpu: 1      # Number of DA3+SAM3 pipeline replicas per GPU
+  timeout: 1800           # Request timeout in seconds (30 min)
+  max_cpu_concurrent: 2   # Max concurrent CPU-phase requests (mapping/AST/route), lower = less RAM
+
+# ============================================================
+# Workspace / Output Settings
+# ============================================================
+output_base: "./workspace"
+
+# Optional HuggingFace endpoint mirror (leave empty to use the official endpoint).
+# Users in mainland China may set this to "https://hf-mirror.com".
+hf_endpoint: ""
+
+# Scene type: "indoor" or "outdoor"
+scene_type: "outdoor"
+
+# Depth limits for different scene types
+max_depth_indoor: 10.0
+max_depth_outdoor: 30.0
+
+# Ceiling height offset above average camera height (indoor only)
+ceiling_height_offset: 1.5
+
+# Camera orientation: when frame count <= this threshold,
+# include per-frame camera pose/heading in tool output and visualizations
+camera_orientation_max_frames: 5
+
+# Intermediate output cleanup
+keep_extracted_frames: false
+keep_da3_output: false
+keep_sam3_output: false
+
+# In-memory pipeline: skip disk I/O for DA3/SAM3/mapping intermediate results.
+# Final AST yaml + visualizations are still written to workspace as usual.
+# Reduces per-scene latency by ~15-25s (eliminates ~300 npy read/write ops).
+use_memory_cache: true
+
+# Default detection categories (overridden via tool call)
+categories:
+  - "car"
+  - "building"
+  - "tree"
+  - "person"
+  - "road"
+  - "sidewalk"
+
+# ============================================================
+# Frame Extraction
+# ============================================================
+frame_extraction:
+  fps: 20
+  max_frames: 60
+  output_folder: "extract_frame"
+  image_quality: 2
+  image_format: "jpg"
+
+# ============================================================
+# Dynamic Mask (for excluding moving objects)
+# ============================================================
+dynamic_mask:
+  enable: false
+  annot_base: ""
+  dyn_pixel_threshold: 0.001
+  indexes_filename: "indexes.txt"
+  dyn_masks_filename: "dyn_masks.npz"
+
+# ============================================================
+# Depth Anything 3
+# ============================================================
+da3:
+  enable: true
+  model: "/path/to/DA3NESTED-GIANT-LARGE-1.1"   # HF repo id or local path to Depth Anything 3
+  output_folder: "da3_output"
+  ref_view_strategy: "saddle_balanced"
+  use_ray_pose: true
+  save_rgb: false
+  conf_threshold: 1.1
+  scene_conf_threshold: 1.5
+
+# ============================================================
+# SAM3 Semantic Segmentation
+# ============================================================
+sam3:
+  enable: true
+  model_path: "/path/to/sam3/sam3.pt"   # local path to the SAM 3 checkpoint
+  conf: 0.85
+  output_folder: "sam_output"
+  save_vis: false
+  save_vis_video: false
+  video_fps: 5
+  half_precision: true
+  seg_batch_size: 60  # Frames per encoder batch (>1 enables batched encoding, ~3-5x faster).
+                     # Set to 1 to fall back to the original frame-by-frame path.
+
+# ============================================================
+# Point Cloud Mapping
+# ============================================================
+mapping:
+  enable: true
+  output_folder: "cognitive_map_output"       # 输出目录名
+  mode: "direct"                              # 点云构建模式: "direct"(直接点云) / "voxel"(体素网格)
+  grid_size: 0.05                             # 体素网格分辨率(米), 越小越精细, 内存消耗越大
+  ceiling_height: null                        # 天花板高度(米), 室内场景过滤天花板点, null=自动计算
+  min_height: null                            # 最低高度(米), 低于此的点被过滤, null=不限制
+  min_depth: 0.1                              # 最小深度(米), 过滤距相机太近的点
+  pixel_conf_threshold: 2.0                   # 像素置信度阈值, 低于此的深度像素被丢弃, 越高过滤越严格
+  point_skip: 30                              # 点采样间隔, 每N个点取1个, 越大点云越稀疏(省内存)
+  denoise_k: 20                               # 连通域去噪阈值, 小于此点数的连通区域被清除, ↑可去除小噪点
+  min_points_per_voxel: 10                     # 每个体素最少点数, 低于此的体素被清零, ↑可过滤稀疏误判
+  flip_y: false                               # 是否翻转Y轴(高度方向), 取决于坐标系约定
+  save_grid_npy: false                        # 是否保存体素网格npy文件(调试用)
+  eps: 0.15                                   # DBSCAN聚类邻域半径(米), ↑合并更远的点为同一实例, ↓拆分更细
+  min_samples: 10                             # DBSCAN最少邻域点数, ↑要求更密集才能形成簇, 过滤稀疏误判
+  use_downsampling: true                      # 大类别点云是否启用体素降采样(节省内存)
+  downsample_voxel_size: 0.01                 # 降采样体素大小(米), 越大降采样越激进
+  large_class_threshold: 10000                # 触发降采样的点数阈值, 超过此数量的类别才降采样
+  merge_dist: 0.4                             # 同类实例合并距离(米), 质心距离小于此则合并
+  min_voxels: 200                              # 实例最少点数, 低于此的实例被丢弃, ↑可过滤小面积误判
+  ast_filename: "cognitive_ast.yaml"          # AST输出文件名
+  ast_format: "all"                           # AST格式: "grid"/"rectangle"/"ellipse"/"all"
+  grid_divisions: 20                          # Grid格式的网格划分数(NxN)
+  use_core_extraction: true                   # 是否提取核心密集区域, 去除低密度尾部离群点
+  core_percentile: 50.0                       # 核心区域密度百分位, ↑过滤越激进(保留更密集的核心)
+  use_gpu: false                               # GPU加速反投影(torch)和DBSCAN聚类(cuML)，false回退到CPU
+
+# ============================================================
+# Route Knowledge
+# ============================================================
+route_knowledge:
+  enable: true
+  output_folder: "cognitive_map_output"
+  grid_divisions: 10
+  min_points_per_cell: 5
+  point_skip: 10
+  voxel_size: 0.1
+  simplify_trajectory: true
+  save_visualization: true
+  trajectory_color: "#FF4444"
+  traversable_color: "#44AA44"
